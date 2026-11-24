@@ -127,13 +127,13 @@ namespace dry_contact {
 
         if (action == DoorAction::CLOSE && this->discrete_close_pin_ != nullptr) {
             this->discrete_close_pin_->digital_write(1);
-            this->ratgdo_->set_timeout(500, [this] {
+            this->ratgdo_->set_timeout(250, [this] {
                 this->discrete_close_pin_->digital_write(0);
             });
         }
 
         this->tx_pin_->digital_write(1); // Single button control
-        this->ratgdo_->set_timeout(500, [this] {
+        this->ratgdo_->set_timeout(250, [this] {
             this->tx_pin_->digital_write(0);
         });
     }
